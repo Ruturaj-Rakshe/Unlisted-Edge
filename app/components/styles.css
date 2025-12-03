@@ -1,0 +1,75 @@
+/* Neo Brutalism pricing card */
+.card {
+  width: 300px;
+  background: #00ffa0;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 0.5vmin solid #05060f;
+  box-shadow: 0.4rem 0.4rem #05060f;
+  overflow: hidden;
+  color: #000;
+}
+
+/* Card content wrapper */
+.pricing-block-content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Plan text */
+.pricing-plan {
+  color: #05060f;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+/* Icon + plan row */
+.plan-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Icon alignment */
+.plan-icon {
+  display: flex;
+  font-size: 26px;
+  align-items: center;
+  justify-content: center;
+  color: #00894d;
+}
+
+/* Price text */
+.price-value {
+  display: flex;
+  color: #05060f;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Subtitle / note */
+.pricing-note {
+  opacity: 0.85;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Checklist */
+.check-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-top: 0.5rem;
+}
+
+/* Each bullet */
+.check-list-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.95rem;
+}
