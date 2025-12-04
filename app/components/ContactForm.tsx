@@ -7,7 +7,6 @@ import { toast } from 'sonner'
 import { z } from 'zod'
 import { Alert, AlertTitle } from '@/components/ui/alert'
 import Button from './Button'
-import { Sign, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/sign'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -35,12 +34,7 @@ const ContactUSFormDemo = () => {
   }
 
   return (
-    <Sign className='w-full shadow-none'>
-      <CardHeader>
-        <CardTitle>Chat with Us</CardTitle>
-        <CardDescription>Describe the issue you&apos;re facing; our team will help you.</CardDescription>
-      </CardHeader>
-      <CardContent>
+
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className='w-full space-y-6'>
 
@@ -111,8 +105,6 @@ const ContactUSFormDemo = () => {
 
           </form>
         </Form>
-      </CardContent>
-    </Sign>
   )
 }
 

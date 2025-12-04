@@ -12,8 +12,8 @@ import {
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
 import Button from "./Button";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { CardDemo } from "./Signupform";
+import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
+
 
 export function NavbarDemo() {
   const navItems = [
@@ -48,17 +48,25 @@ export function NavbarDemo() {
 
 return (
   <div className="relative w-full h-[13vh]">
-    <Dialog>
       <Navbar>
         {/* Desktop Navigation */}
         <NavBody>
           <NavbarLogo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
-            <DialogTrigger asChild>
-              <Button label="Login" onClick={()=>{}} className="rounded-xl w-28 h-10 hover:bg-[hsl(213,67%,24%)]"/>
-            </DialogTrigger>
-            <Button label="Sign Up" onClick={()=>{}} className="rounded-xl w-28 h-10 hover:bg-[hsl(213,67%,24%)] z-50"/>
+            <SignedOut>
+              <SignInButton>
+                <Button label="Login" onClick={()=>{}} className="rounded-xl w-28 h-10 hover:bg-[hsl(213,67%,24%)] z-50"/>
+              </SignInButton>
+
+              <SignUpButton>
+                <Button label="Sign Up" onClick={()=>{}} className="rounded-xl w-28 h-10 hover:bg-[hsl(213,67%,24%)] z-50"/>
+              </SignUpButton>
+            </SignedOut>
+
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
           </div>
         </NavBody>
 
@@ -87,21 +95,21 @@ return (
               </a>
             ))}
             <div className="flex w-full flex-col gap-4">
-              <DialogTrigger asChild>
-                  <Button label="Sign Up" onClick={()=>{}} className="rounded-xl w-28 h-10 hover:bg-[hsl(213,67%,24%)]"/>
-              </DialogTrigger>
-              <Button label="Sign Up" onClick={()=>{}} className="rounded-xl w-28 h-10 hover:bg-[hsl(213,67%,24%)]"/>         
+            <SignedOut>
+              <SignInButton>
+                <Button label="Login" onClick={()=>{}} className="rounded-xl w-28 h-10 hover:bg-[hsl(213,67%,24%)]"/>
+              </SignInButton>
+              <SignUpButton>
+                <Button label="Sign Up" onClick={()=>{}} className="rounded-xl w-28 h-10 hover:bg-[hsl(213,67%,24%)]"/>
+               </SignUpButton>         
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
             </div>
           </MobileNavMenu>
         </MobileNav>
       </Navbar>
-      <DialogContent
-          className="flex justify-center items-center p-0 border-none bg-transparent backdrop-blur-xl"
-        >
-          <CardDemo />
-      </DialogContent>
-    </Dialog>
-
       {/* Navbar */}
     </div>
   );
