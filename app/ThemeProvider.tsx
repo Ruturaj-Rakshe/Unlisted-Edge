@@ -1,6 +1,6 @@
 "use client";
 import { createContext, useContext, useState, useEffect } from "react";
-import Chatbot from "./components/ChatBot";
+import ThemeSelector from "./components/ThemeSelector";
 
 const ThemeContext = createContext({
   theme: "default",
@@ -16,7 +16,7 @@ export const ThemeProvider = ({ children } : { children: React.ReactNode}) => {
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
-      <Chatbot setTheme={setTheme}/>
+      <ThemeSelector setTheme={setTheme}/>
       {children}
     </ThemeContext.Provider>
   );

@@ -1,12 +1,12 @@
 "use client";
 import { useState } from "react";
 
-export default function Chatbot({
+export default function ThemeSelector({
   setTheme,
 }: {
   setTheme: (theme: string) => void;
 }) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
 
@@ -15,7 +15,7 @@ export default function Chatbot({
       const ageFormat = selectedAge === "40+" ? "40plus" : selectedAge;
       const theme = `theme-${ageFormat}-${selectedGender}`;
       setTheme(theme);
-      console.log("✅ Theme set to:", theme);
+      console.log("Theme set to:", theme);
     }
   };
 
@@ -36,7 +36,7 @@ export default function Chatbot({
         <div className="fixed bottom-6 right-6 w-80 bg-white rounded-xl shadow-xl border-2 border-gray-200 z-50 p-4">
           {/* Header */}
           <div className="flex justify-between items-center mb-4">
-            <h2 className="font-bold text-lg">Choose Your Theme</h2>
+            <h2 className="font-bold text-lg text-black">Choose Your Theme</h2>
             <button 
               onClick={() => setOpen(false)}
               className="text-gray-500 hover:text-gray-700 text-xl"
@@ -47,14 +47,14 @@ export default function Chatbot({
 
           {/* Age Selector */}
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-2">Age Group:</label>
+            <label className="block text-sm font-medium mb-2 text-black">Age Group:</label>
             <select
               value={age}
               onChange={(e) => {
                 setAge(e.target.value);
                 handleThemeChange(e.target.value, gender);
               }}
-              className="w-full p-2 border rounded-md"
+              className="w-full p-2 border rounded-md text-black"
             >
               <option value="">Select Age</option>
               <option value="18-25">18-25</option>
@@ -65,14 +65,14 @@ export default function Chatbot({
 
           {/* Gender Selector */}
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-2">Gender:</label>
+            <label className="block text-sm font-medium mb-2 text-black">Gender:</label>
             <select
               value={gender}
               onChange={(e) => {
                 setGender(e.target.value);
                 handleThemeChange(age, e.target.value);
               }}
-              className="w-full p-2 border rounded-md"
+              className="w-full p-2 border rounded-md text-black"
             >
               <option value="">Select Gender</option>
               <option value="male">Male</option>
@@ -91,5 +91,3 @@ export default function Chatbot({
     </>
   );
 }
-
-  
