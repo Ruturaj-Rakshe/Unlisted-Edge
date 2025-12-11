@@ -15,10 +15,12 @@ export default function Chatbot({
   const [step, setStep] = useState(0);
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
+  const hasGreeted = useRef(false);
 
   // Greeting when opened
   useEffect(() => {
     if (open && messages.length === 0) {
+       hasGreeted.current = true;
       setMessages((prev) => [
         ...prev,
         {
@@ -27,7 +29,7 @@ export default function Chatbot({
         },
       ]);
     }
-  }, [open]);
+  }, );
 
   const sendMessage = () => {
     if (!input.trim()) return;
@@ -59,7 +61,7 @@ export default function Chatbot({
         ]);
       }, 400);
 
-      const themeValue = `${age}-${userMsg}`.toLowerCase().replace(/\s+/g, "");
+      const themeValue = `theme-${age}-${userMsg}`.toLowerCase().replace(/\s+/g, "");
 
       setTheme(themeValue);
 
@@ -134,7 +136,7 @@ export default function Chatbot({
                     onChange={(e) => {
                       setGender(e.target.value);
                       if (age && e.target.value) {
-                        const themeValue = `${age}-${e.target.value}`.toLowerCase().replace(/\s+/g, "");
+                        const themeValue = `theme-${age}-${e.target.value}`.toLowerCase().replace(/\s+/g, "");
                         setTheme(themeValue);
                       }
                     }}

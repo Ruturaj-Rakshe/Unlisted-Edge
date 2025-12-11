@@ -304,7 +304,10 @@ export default function Home() {
   <div className="flex items-center justify-center mt-10 mb-2">
     <HoverButton label="Start Trading" secondLabel="Today!" className="pt-3" />
   </div>
+
+
 </section>
+
     </LayoutContent>
 </SmoothScrollerProvider>
     </>

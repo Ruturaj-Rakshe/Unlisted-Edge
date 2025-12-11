@@ -1,14 +1,25 @@
 "use client";
-import { useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import Chatbot from "./components/ChatBot";
 
-export default function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState("");
+const ThemeContext = createContext({
+  theme: "default",
+  setTheme: (t: string) => {}
+});
+
+export const ThemeProvider = ({ children } : { children: React.ReactNode}) => {
+  const [theme, setTheme] = useState("default");
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
 
   return (
-    <div className={theme}>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <Chatbot setTheme={setTheme}/>
       {children}
-      <Chatbot setTheme={setTheme} />
-    </div>
+    </ThemeContext.Provider>
   );
-}
+};
+
+export const useTheme = () => useContext(ThemeContext);
