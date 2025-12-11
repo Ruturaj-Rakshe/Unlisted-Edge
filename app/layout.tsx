@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { NavbarDemo } from "./components/Navbar";
 import { Footeer } from "./components/Footer";
-import {ClerkProvider} from '@clerk/nextjs'
+import { ClerkProvider } from '@clerk/nextjs';
+import ThemeProvider from "./ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,18 +27,19 @@ export default function RootLayout({
 }>) {
   return (
     <>
-    {console.log("CLERK KEY:", process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY)}
-    <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      > 
-        <NavbarDemo/>
-        {children}
-        <Footeer/>
-      </body>
-    </html>
-    </ClerkProvider>
+      <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
+        <html lang="en">
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          > 
+            <ThemeProvider>
+              {children}
+              <Footeer />
+            </ThemeProvider>
+            
+          </body>
+        </html>
+      </ClerkProvider>
     </>
   );
 }

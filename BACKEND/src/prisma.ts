@@ -1,9 +1,19 @@
 import { PrismaClient } from '@prisma/client';
+import { PrismaPg } from '@prisma/adapter-pg';
+import { Pool } from 'pg';
 import dotenv from 'dotenv';
+
 dotenv.config();
-const prisma = new PrismaClient({
-  // In v7, you **must** pass either adapter or accelerateUrl
-  accelerateUrl: process.env.DATABASE_URL, // treat your Neon URL as accelerateUrl if you want a quick fix
+
+// Create a PostgreSQL connection pool
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
 });
+
+// Create the Prisma adapter
+const adapter = new PrismaPg(pool);
+
+// Initialize Prisma Client with the adapter
+const prisma = new PrismaClient({ adapter });
 
 export default prisma;

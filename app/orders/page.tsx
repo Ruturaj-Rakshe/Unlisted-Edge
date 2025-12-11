@@ -1,18 +1,17 @@
-import React from 'react'
 import Card from '../components/Card'
 import Image from 'next/image'
 import ContactCard from '../components/ContactCard'
-import { IconBrandFacebook, IconBrandGithub } from '@tabler/icons-react'
 import { SmoothScrollerProvider } from '../ScrollContext'
+import LayoutContent from '../LayoutContent'
 
 export default function Orders(){
   return (
 <>  
     <SmoothScrollerProvider>
-
+    <LayoutContent>
     <section className='bg-blue-100 w-full py-20'> 
       <div className='flex flex-col items-center justify-center max-w-7xl mx-auto px-4'>
-        <h1 className='text-5xl sm:text-3xl text-center font-semibold zalando-sans text-black'>
+        <h1 className='lg:text-5xl sm:text-3xl text-center font-semibold zalando-sans text-black'>
            Your Intelligent Order Command Center
         </h1>
 
@@ -84,6 +83,7 @@ export default function Orders(){
 
   </div>
 </section>
+    </LayoutContent>
 </SmoothScrollerProvider>
 
 </>

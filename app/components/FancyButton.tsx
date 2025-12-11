@@ -19,7 +19,7 @@ export default function FancyButton({ label, onClick, className = "" }: FancyBut
         hover:scale-110 hover:outline-[#70bdca] hover:shadow-[4px_5px_17px_-4px_#268391]
       `}
     >
-      <span className="relative z-10 transition-colors duration-[1000ms] group-hover:text-white">
+      <span className="relative z-10 text-center transition-colors duration-[1000ms] group-hover:text-white">
         {label}
       </span>
 

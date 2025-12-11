@@ -1,18 +1,19 @@
 import ContactCard from "../components/ContactCard";
 import ContactUSFormDemo from "../components/ContactForm";
+import LayoutContent from "../LayoutContent";
 import { SmoothScrollerProvider } from "../ScrollContext";
-
 export default function Contact() {
   return (
     <SmoothScrollerProvider>
 
+      <LayoutContent>
     <section className="min-h-screen bg-white flex items-center">
       <div className="w-full px-4 sm:px-6 md:px-10">
         <div className="mt-10 grid grid-cols-1 md:grid-cols-[0.5fr_1.5fr] gap-6">
 
           {/* LEFT — Heading and Cards */}
           <div className="flex flex-col items-start justify-start">
-            <h1 className="text-4xl sm:text-5xl font-bold zalando-sans pt-6 sm:pt-10 text-nowrap">
+            <h1 className="text-4xl md:mb-2 sm:text-5xl font-bold zalando-sans pt-6 sm:pt-10 text-nowrap">
               Contact Us
             </h1>
 
@@ -27,7 +28,7 @@ export default function Contact() {
             </div>
 
             {/* Cards */}
-            <div className="flex flex-col pb-3 sm:flex-row gap-6 sm:gap-3 mt-6 sm:mt-10 items-center sm:justify-center">
+            <div className="flex flex-col pb-3 sm:flex-row gap-8 sm:gap-3 mt-6 sm:mt-10 items-center sm:justify-center">
               <ContactCard
                 plan="MarketMate AI Chat"
                 note="For instant answers, chat with our AI Assistant"
@@ -38,21 +39,23 @@ export default function Contact() {
                 plan="Feedback and Suggestions"
                 note="We value your feedback and are working to improve Unlisted-Edge"
                 features={[]}
-                className="-ml-2"
+                className="-ml-0.5"
               />
 
             </div>
-            <ContactCard
+            <div className="mb-4">
+               <ContactCard
                 plan="Media Queries"
                 note="For media-related questions or press inquiries, please contact us at media@ue"
                 features={[]}
-                className="-ml-2"
+                className="rectangular-card -ml-2 mb-2"
               />
-
+            </div>
+           
           </div>
 
           {/* RIGHT — FORM */}
-          <div className="flex items-center justify-center mt-6 pb-3 md:mt-0">
+          <div className="flex items-center justify-center mt-1 pb-3 md:mt-0">
             <div className="w-full">
               <ContactUSFormDemo />
             </div>
@@ -61,6 +64,7 @@ export default function Contact() {
         </div>
       </div>
     </section>
+    </LayoutContent>
 </SmoothScrollerProvider>
   );
 }

@@ -6,17 +6,15 @@ import { NavbarDemo } from "./components/Navbar";
 export default function LayoutContent({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
+  const noNavbarPages = ["/contactno", "/kyc"];
 
-  const noNavbar = ["/contactno"];
-
-  const hideNavbar = pathname.startsWith(noNavbar.find((path) => pathname.startsWith(path)) || "");
+  //Find out what this does
+  const hideNavbar = noNavbarPages.some((path) => pathname.startsWith(path));
 
   return (
     <>
-        {!hideNavbar && <NavbarDemo />}
-        {children}
-        
-
+      {!hideNavbar && <NavbarDemo />}
+      {children}
     </>
   );
 }

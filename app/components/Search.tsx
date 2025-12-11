@@ -24,7 +24,8 @@ export default function Search(){
     <div>
         <Input
         onChange={(e) => handleChange(e.target.value)}
-        type="text" placeholder="Search..." className="w-full max-w-md mx-auto mt-10 mb-10"/>
+        placeholder="Search Unlisted Companies..."
+        type="text" className="w-full border-2 placeholder:text-black placeholder:italic placeholder:bold border-black max-w-md mx-auto mt-10 mb-10"/>
       
     </div>
   )

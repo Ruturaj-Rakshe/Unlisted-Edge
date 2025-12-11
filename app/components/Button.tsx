@@ -1,12 +1,17 @@
+import React from "react";
+
 interface ButtonProps {
-  label: string;
-  onClick: () => void;
+  label?: React.ReactNode;
+  onClick?: () => void;
+  type?: "button" | "submit" | "reset";
   className?: string;
+  icon?: React.ReactNode;
 }
 
-export default function Button({ label, onClick, className }: ButtonProps) {
+export default function Button({ label, onClick, className, icon, type = "button" }: ButtonProps) {
   return (
     <button
+      type={type}
       onClick={onClick}
       className={`
         cursor-pointer flex items-center justify-center
@@ -15,7 +20,7 @@ export default function Button({ label, onClick, className }: ButtonProps) {
         uppercase tracking-[1.5px]
         text-[15px] sm:text-[16px]
         bg-white text-black
-        shadow-[0_0_8px_rgba(0,0,0,0.05)]
+        shadow-[0_4px_24px_rgba(0,0,0,0.12)]
         transition-all duration-500 ease-in-out
         hover:tracking-[3px]
         hover:text-white
@@ -24,8 +29,12 @@ export default function Button({ label, onClick, className }: ButtonProps) {
         active:translate-y-1 active:duration-100
         ${className}  /* must be at the end */
       `}
-    >
-      {label}
+    > 
+<div className="flex flex-col items-center justify-center gap-[0.5px]">
+  {icon && <span className="flex items-center mr-5">{icon}</span>}
+  {label && <span className="">{label}</span>}
+</div>
+
     </button>
   );
 }

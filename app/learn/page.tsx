@@ -5,11 +5,13 @@ import ContactCard from '../components/ContactCard'
 import FancyButton from '../components/FancyButton'
 import Courses from '../components/Courses'
 import { SmoothScrollerProvider } from '../ScrollContext'
+import LayoutContent from '../LayoutContent';
 
 export default function Learn() {
   return (
     <>
       <SmoothScrollerProvider>
+        <LayoutContent>
 
         <div className='w-full overflow-x-hidden'>
         <section className="bg-blue-100 w-full py-20 px-4">
@@ -97,7 +99,7 @@ export default function Learn() {
           </div>
         </section>
         </div>
-
+        </LayoutContent>
       </SmoothScrollerProvider>
     </>
   );

@@ -7,21 +7,23 @@ import Image from "next/image";
 import GlassCard from "./components/GlassCard";
 import { CardStackDemo } from "./components/ThreeCards";
 import HoverButton from "./components/HoverButton";
-import { Footeer } from "./components/Footer";
 import { SmoothScrollerProvider } from "./ScrollContext";
-
+import { useRouter } from "next/navigation";
+import LayoutContent from "./LayoutContent";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <>
   <SmoothScrollerProvider>
+    <LayoutContent>
 <section className="bg-blue-100 text-black min-h-screen w-full flex items-center justify-center px-4 md:px-10">
   <div className="flex flex-col items-center text-center w-full max-w-7xl mx-auto">
-    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold zalando-sans leading-tight">
+    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold calsans-regular leading-tight">
       Unlock the Future of <br />Unlisted Shares
     </h1>
 
-    <p className="mt-6 text-base sm:text-lg md:text-xl zalando-sans-italic leading-relaxed">
+    <p className="mt-6 text-base sm:text-lg md:text-xl calsans-regular font-light leading-relaxed">
       India's most transparent, AI-powered marketplace for trading <br/> unlisted shares. Trust the Trade. Find Your Edge.
     </p>
 
@@ -30,7 +32,7 @@ export default function Home() {
       <Button 
         label="Learn More" 
         className="rounded-full cursor-pointer text-black outline outline-2 outline-[#2c9caf] hover:bg-[#2c9caf]" 
-        onClick={() => {}} 
+        onClick={() => router.push('/learn')} 
       />
     </div>
   </div>
@@ -303,7 +305,7 @@ export default function Home() {
     <HoverButton label="Start Trading" secondLabel="Today!" className="pt-3" />
   </div>
 </section>
-
+    </LayoutContent>
 </SmoothScrollerProvider>
     </>
 

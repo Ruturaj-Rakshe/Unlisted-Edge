@@ -9,7 +9,7 @@ export default defineConfig({
   },
   datasource: {
     
-      url: env('DATABASE_URL'), // your Neon connection string
+      url: env('DATABASE_URL'), 
     },
   },
 );

@@ -36,8 +36,8 @@ const ContactUSFormDemo = () => {
   return (
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className='w-full space-y-6'>
-
+          <form onSubmit={form.handleSubmit(onSubmit)} className='w-full m-6 space-y-8 border-2 p-8 rounded-2xl shadow-lg'>
+            <h1 className='text-3xl font-bold zalando-sans'>Chat with Us..</h1>
             {/* Full Name */}
             <FormField
               control={form.control}

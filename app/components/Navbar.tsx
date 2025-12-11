@@ -13,6 +13,8 @@ import {
 import { useState } from "react";
 import Button from "./Button";
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
+import FancyButton from "./FancyButton";
+import { useRouter } from "next/navigation";
 
 
 export function NavbarDemo() {
@@ -45,9 +47,10 @@ export function NavbarDemo() {
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const router = useRouter();
 
 return (
-  <div className="relative w-full h-[13vh]">
+  <div className="relative w-full h-[13vh] bg-green-200">
       <Navbar>
         {/* Desktop Navigation */}
         <NavBody>
@@ -65,6 +68,7 @@ return (
             </SignedOut>
 
             <SignedIn>
+              <FancyButton label="KYC Verification" onClick={()=>router.push('/kyc')}/>
               <UserButton />
             </SignedIn>
           </div>
@@ -89,7 +93,7 @@ return (
                 key={`mobile-link-${idx}`}
                 href={item.link}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="relative text-neutral-600 dark:text-neutral-300"
+                className="relative text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-neutral-100 py-1 px-2 block"
               >
                 <span className="block">{item.name}</span>
               </a>
@@ -104,6 +108,7 @@ return (
                </SignUpButton>         
             </SignedOut>
             <SignedIn>
+              <FancyButton label="KYC Verification" className="w-[40vw]" onClick={()=> router.push("/kyc")}/>
               <UserButton />
             </SignedIn>
             </div>

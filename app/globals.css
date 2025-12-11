@@ -38,6 +38,17 @@
     font-family: 'Zalando Sans Italic', sans-serif;
 }
 
+@font-face {
+  font-family: 'CalSans-Regular';
+  src: url('/fonts/CalSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+.calsans-regular {
+  font-family: 'CalSans-Regular', sans-serif;
+}
+
 @layer utilities {
   @keyframes blob-bounce {
     0% {
@@ -228,6 +239,120 @@
     --sidebar-ring: oklch(0.556 0 0);
 }
 
+.theme-genz-male {
+    --background: #040404;
+    --foreground: #f7f7f7;
+    --primary: #00eaff;
+    --primary-foreground: #000000;
+    --secondary: #1a1a1a;
+    --secondary-foreground: #b7fbff;
+    --card: #0d0d0d;
+    --card-foreground: #ffffff;
+    --accent: #ff4dff;
+    --accent-foreground: #000000; 
+
+    
+  }
+
+.theme-genz-female {
+  --background: #fff0f8;
+  --foreground: #2e2e2e;
+  --primary: #ff79c6;
+  --primary-foreground: #ffffff;
+  --secondary: #ffd1e8;
+  --secondary-foreground: #000000;
+  --card: #ffe6f1;
+  --card-foreground: #1a1a1a;
+  --accent: #ff9ad0;
+  --accent-foreground: #000;
+}
+
+.theme-millennial-male {
+  --background: #ffffff;
+  --foreground: #1f1f1f;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --secondary: #e5e7eb;
+  --secondary-foreground: #111;
+  --card: #f9fafb;
+  --card-foreground: #111;
+  --accent: #9333ea;
+  --accent-foreground: #fff;
+}
+
+.theme-millennial-female {
+  --background: #fef7ff;
+  --foreground: #1f1f1f;
+  --primary: #d946ef;
+  --primary-foreground: #fff;
+  --secondary: #f3e8ff;
+  --secondary-foreground: #000;
+  --card: #fff;
+  --card-foreground: #000;
+  --accent: #c084fc;
+  --accent-foreground: #fff;
+}
+
+/* ------------------------------------
+      🎨 CUSTOM USER THEMES (VALID)
+-------------------------------------*/
+
+.theme-18-25-male {
+  --background: #0d0f17;
+  --foreground: #ffffff;
+  --primary: #4a6bff;
+  --secondary: #191d2b;
+  --accent: #7aa0ff;
+  background: linear-gradient(135deg, #0d0f17, #1b233a);
+}
+
+.theme-18-25-female {
+  --background: #fef6ff;
+  --foreground: #2d0036;
+  --primary: #ff4d9e;
+  --secondary: #ffd8f0;
+  --accent: #ff8ecf;
+  background: linear-gradient(135deg, #ffe6f4, #ffd0e9);
+}
+
+.theme-26-35-male {
+  --background: #0e1318;
+  --foreground: #d7e0ea;
+  --primary: #00c8ff;
+  --secondary: #1c262f;
+  --accent: #0094cc;
+  background: linear-gradient(135deg, #0f161c, #12202c);
+}
+
+.theme-26-35-female {
+  --background: #fff7fb;
+  --foreground: #4b0037;
+  --primary: #ff5bb3;
+  --secondary: #ffe0f2;
+  --accent: #ff8ccd;
+  background: linear-gradient(135deg, #ffeef7, #ffdaed);
+}
+
+.theme-40plus-male {
+  --background: #f3f3f3;
+  --foreground: #111;
+  --primary: #0054a6;
+  --secondary: #d6e4f7;
+  --accent: #4f93da;
+  background: linear-gradient(135deg, #dde5f0, #f6f8fb);
+}
+
+.theme-40plus-female {
+  --background: #fcf1e8;
+  --foreground: #5f3600;
+  --primary: #ff8a3d;
+  --secondary: #ffe0cc;
+  --accent: #ffab70;
+  background: linear-gradient(135deg, #ffe8d3, #fff4eb);
+}
+
+
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -237,7 +362,27 @@
     }
 }
 
+
 .button:hover::before { transform: translate(0%, 0%); }
 .button:hover::after { transform: translate(0%, -200%); }
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-scroll {
+  animation: scroll linear infinite;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
 
 

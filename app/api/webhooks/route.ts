@@ -13,25 +13,33 @@ export async function POST(req: NextRequest) {
     // console.log(`Received webhook with ID ${id} and event type of ${eventType}`)
     // console.log('Webhook payload:', evt.data)
 
-    if(evt.type === 'user.created') {
-      const { id, email_addresses, first_name, last_name, image_url, username } = evt.data
-      try {
-        const newUser = await prisma.user.create({
-            data: {
-                email: email_addresses[0]?.email_address,
-                id,
-                username: username || email_addresses[0]?.email_address.split('@')[0],
-                firstName: first_name,
-                lastName: last_name,
-                imageUrl: image_url
-            }
-        })
-        return new Response(JSON.stringify(newUser), { status: 200 })
-      } catch (error) {
-        console.error('Error creating user:', error)
-        return new Response('Failed to create user', { status: 500 })
+    if (evt.type === "user.created") {
+  const { id, email_addresses, first_name, last_name, image_url, username } = evt.data
+
+  const email = email_addresses?.[0]?.email_address
+  if (!email) {
+    console.error("User.created webhook received without email — skipping DB insert")
+    return new Response("Missing email — user not stored", { status: 400 })
+  }
+
+  try {
+    const newUser = await prisma.user.create({
+      data: {
+        id,
+        email,
+        username: username || email.split("@")[0],
+        firstName: first_name,
+        lastName: last_name,
+        imageUrl: image_url
       }
-    }
+    })
+    return new Response(JSON.stringify(newUser), { status: 200 })
+  } catch (error) {
+    console.error("Error creating user:", error)
+    return new Response("Failed to create user", { status: 500 })
+  }
+}
+
 
     if(evt.type === 'user.updated') {
       const { id, email_addresses, first_name, last_name, image_url, username } = evt.data
